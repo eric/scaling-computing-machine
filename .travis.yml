@@ -9,7 +9,7 @@ env:
   - NAMESERVERS="199.91.168.70 199.91.168.71" DOWNLOAD_HOST=s3-2.amazonaws.com
 
 before_install:
-  - sudo change-nameservers $NAMESERVERS
+  - sudo ./change-nameservers $NAMESERVERS
   
   - sudo apt-get -qq update
   - sudo apt-get install libpcap-dev
