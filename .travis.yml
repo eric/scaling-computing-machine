@@ -2,10 +2,11 @@ language: ruby
 
 env:
   - NAMESERVERS=default
+  - NAMESERVERS=default DOWNLOAD_HOST=s3-1.amazonaws.com
+  - NAMESERVERS=default DOWNLOAD_HOST=s3-2.amazonaws.com
   - NAMESERVERS="199.91.168.70 199.91.168.71"
-  - DOWNLOAD_HOST=
-  - DOWNLOAD_HOST=s3-1.amazonaws.com
-  - DOWNLOAD_HOST=s3-2.amazonaws.com
+  - NAMESERVERS="199.91.168.70 199.91.168.71" DOWNLOAD_HOST=s3-1.amazonaws.com
+  - NAMESERVERS="199.91.168.70 199.91.168.71" DOWNLOAD_HOST=s3-2.amazonaws.com
 
 before_install:
   - sudo change-nameservers $NAMESERVERS
