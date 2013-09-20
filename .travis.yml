@@ -10,6 +10,6 @@ before_install:
 
 install:
   - tar zxf pchar-1.5.tar.gz
-  - cd pchar-1.5 && env CXXFLAGS="-D__USE_MISC=1 -D__FAVOR_BSD=1" ./configure --with-ipv6 --with-pcap --prefix=../ && make install
+  - cd pchar-1.5 && env CXXFLAGS="-D__USE_MISC=1 -D__FAVOR_BSD=1" ./configure --with-ipv6 --prefix=../ && make install
 
 script: ./script.sh
