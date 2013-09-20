@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+if [ $# -eq 0 ]; then
+  echo "No nameservers specified"
+  exit 1
+fi
+
+if [ "$1" = "default" ];
+  echo "Leaving nameservers as default"
+  exit 0
+fi
+
+resolv_conf_stanza() {
+  for ns in "$@" ; do
+    echo "nameserver $ns"
+  done
+}
+
+resolv_conf_stanza "$@" > /etc/resolv.conf

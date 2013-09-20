@@ -1,26 +1,24 @@
 language: ruby
 
+env:
+  - NAMESERVERS=default
+  - NAMESERVERS="199.91.168.70 199.91.168.71"
+  - DOWNLOAD_HOST=
+  - DOWNLOAD_HOST=s3-1.amazonaws.com
+  - DOWNLOAD_HOST=s3-2.amazonaws.com
+
 before_install:
-  - printf "nameserver 199.91.168.70\nnameserver 199.91.168.71\n" | sudo tee /etc/resolv.conf
-  # - ruby -rresolv -e 'puts "#{Resolv.getaddress("s3-1.amazonaws.com")}\ts3.amazonaws.com"' | sudo tee -a /etc/hosts
+  - sudo change-nameservers $NAMESERVERS
   
   - sudo apt-get -qq update
-  # - sudo apt-get install -qq scriptroute
-  # - sudo apt-get install -qq pathchar
   - sudo apt-get install libpcap-dev
   - sudo apt-get install traceroute host
-#  - curl -O http://www.kitchenlab.org/www/bmah/Software/pchar/pchar-1.5.tar.gz
-
-# install:
-#   - tar zxf pchar-1.5.tar.gz
-#   - ( cd pchar-1.5 && ./configure --with-ipv6 --prefix=../ && make install )
 
 before_script:
-  # - sbin/pchar -h
   - ifconfig -a
   - cat /etc/hosts
   - cat /etc/resolv.conf
   - hostname
   - host s3.amazonaws.com
 
-script: ./script.sh
+script: ./download-file $DOWNLOAD_HOST
