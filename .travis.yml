@@ -17,5 +17,6 @@ before_script:
   - ifconfig -a
   - cat /etc/hosts
   - hostname
+  - host s3.amazonaws.com
 
 script: ./script.sh
