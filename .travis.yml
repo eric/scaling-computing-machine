@@ -1,7 +1,6 @@
 language: ruby
 
 before_install:
-  - sudo cp -f resolv.conf /etc/resolv.conf
   - sudo apt-get -qq update
   # - sudo apt-get install -qq scriptroute
   # - sudo apt-get install -qq pathchar
