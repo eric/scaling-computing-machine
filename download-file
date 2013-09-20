@@ -9,14 +9,15 @@ if [ "$1" != "" ]; then
   ip=$(host $1 | awk '/has address/ { print $4 }')
   
   echo "Downloading from overridden $host with $1 ($ip)"
-  curl -o /dev/null --resolve $host:443:$ip $url
+  curl -o /dev/null --resolve "$host:443:$ip" $url
   
   traceroute -A $ip
+else
+  echo "Downloading from $host"
+
+  curl -o /dev/null $url
+
+  traceroute -A $host
 fi
 
-echo "Downloading from $host"
-
-curl -o /dev/null $url
-
-traceroute -A s3.amazonaws.com
 
