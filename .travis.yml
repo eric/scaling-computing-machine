@@ -4,9 +4,11 @@ rvm:
   - ree
 
 before_install:
-  - sudo add-apt-repository -y http://www.scriptroute.org/debian/
+  # - sudo add-apt-repository -y http://www.scriptroute.org/debian/
   - sudo apt-get -qq update
-  - sudo apt-get install -qq scriptroute
+  # - sudo apt-get install -qq scriptroute
   - sudo apt-get install -qq pchar
+
+install: true
 
 script: ./script.sh
