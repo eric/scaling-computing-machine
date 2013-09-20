@@ -13,6 +13,6 @@ install:
   - ( cd pchar-1.5 && ./configure --with-ipv6 --prefix=../ && make install )
 
 before_script:
-  - sbin/pchar --help
+  - sbin/pchar -h
 
 script: ./script.sh
