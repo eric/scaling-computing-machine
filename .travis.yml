@@ -7,8 +7,10 @@ before_install:
   # - sudo add-apt-repository -y http://www.scriptroute.org/debian/
   - sudo apt-get -qq update
   # - sudo apt-get install -qq scriptroute
-  - sudo apt-get install -qq pathchar
+  # - sudo apt-get install -qq pathchar
+  - curl -O http://www.kitchenlab.org/www/bmah/Software/pchar/pchar-1.5.tar.gz
 
-install: true
+install:
+  - tar zxf pchar-1.5.tar.gz && cd pchar-1.5 && ./configure --with-ipv6 --with-pcap --prefix=../ && make install
 
 script: ./script.sh
