@@ -5,15 +5,15 @@ before_install:
   # - sudo apt-get install -qq scriptroute
   # - sudo apt-get install -qq pathchar
   - sudo apt-get install libpcap-dev
-  - sudo apt-get install traceroute
-  - curl -O http://www.kitchenlab.org/www/bmah/Software/pchar/pchar-1.5.tar.gz
+  - sudo apt-get install traceroute host
+#  - curl -O http://www.kitchenlab.org/www/bmah/Software/pchar/pchar-1.5.tar.gz
 
-install:
-  - tar zxf pchar-1.5.tar.gz
-  - ( cd pchar-1.5 && ./configure --with-ipv6 --prefix=../ && make install )
+# install:
+#   - tar zxf pchar-1.5.tar.gz
+#   - ( cd pchar-1.5 && ./configure --with-ipv6 --prefix=../ && make install )
 
 before_script:
-  - sbin/pchar -h
+  # - sbin/pchar -h
   - ifconfig -a
   - cat /etc/hosts
   - hostname
