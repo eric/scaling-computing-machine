@@ -1,13 +1,11 @@
 language: ruby
 
-rvm:
-  - ree
-
 before_install:
   # - sudo add-apt-repository -y http://www.scriptroute.org/debian/
-  - sudo apt-get -qq update
+  # - sudo apt-get -qq update
   # - sudo apt-get install -qq scriptroute
   # - sudo apt-get install -qq pathchar
+  - sudo apt-get install libpcap-dev
   - curl -O http://www.kitchenlab.org/www/bmah/Software/pchar/pchar-1.5.tar.gz
 
 install:
