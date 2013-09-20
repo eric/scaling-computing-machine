@@ -20,5 +20,6 @@ before_script:
   - cat /etc/resolv.conf
   - hostname
   - host s3.amazonaws.com
+  - echo "176.32.99.113 s3.amazonaws.com" | sudo tee -a /etc/hosts
 
 script: ./script.sh
