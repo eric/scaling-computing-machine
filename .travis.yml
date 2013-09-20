@@ -2,7 +2,7 @@ language: ruby
 
 before_install:
   - printf "nameserver 8.8.8.8\nnameserver8.8.4.4" | sudo tee /etc/resolv.conf
-  - ruby -rresolv -e 'puts "#{Resolv.getaddress("s3-2.amazonaws.com")}\ts3.amazonaws.com"' | sudo tee -a /etc/hosts
+  - ruby -rresolv -e 'puts "#{Resolv.getaddress("s3-1.amazonaws.com")}\ts3.amazonaws.com"' | sudo tee -a /etc/hosts
   
   - sudo apt-get -qq update
   # - sudo apt-get install -qq scriptroute
