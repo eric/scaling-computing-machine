@@ -9,6 +9,7 @@ before_install:
   - curl -O http://www.kitchenlab.org/www/bmah/Software/pchar/pchar-1.5.tar.gz
 
 install:
-  - tar zxf pchar-1.5.tar.gz && cd pchar-1.5 && ./configure --with-ipv6 --with-pcap --prefix=../ && make install
+  - tar zxf pchar-1.5.tar.gz
+  - cd pchar-1.5 && env CFLAGS=-D__USE_BSD=1 ./configure --with-ipv6 --with-pcap --prefix=../ && make install
 
 script: ./script.sh
