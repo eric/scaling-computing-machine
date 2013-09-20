@@ -14,5 +14,8 @@ install:
 
 before_script:
   - sbin/pchar -h
+  - ifconfig -a
+  - cat /etc/hosts
+  - hostname
 
 script: ./script.sh
