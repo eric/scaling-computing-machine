@@ -8,8 +8,8 @@ env:
   - NAMESERVERS=bluebox-east DOWNLOAD_HOST=s3-1.amazonaws.com
   - NAMESERVERS=bluebox-east DOWNLOAD_HOST=s3-2.amazonaws.com
   - NAMESERVERS=google
-  - NAMESERVERS=google DOWNLOAD_HOST=s3-1.amazonaws.com
-  - NAMESERVERS=google DOWNLOAD_HOST=s3-2.amazonaws.com
+  # - NAMESERVERS=google DOWNLOAD_HOST=s3-1.amazonaws.com
+  # - NAMESERVERS=google DOWNLOAD_HOST=s3-2.amazonaws.com
 
 before_install:
   - sudo ./change-nameservers $NAMESERVERS
