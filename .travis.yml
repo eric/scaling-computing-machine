@@ -1,9 +1,9 @@
 language: ruby
 
 env:
-  - NAMESERVERS=bluebox-west
-  - NAMESERVERS=bluebox-west DOWNLOAD_HOST=s3-1.amazonaws.com
-  - NAMESERVERS=bluebox-west DOWNLOAD_HOST=s3-2.amazonaws.com
+  - NAMESERVERS=default
+  - NAMESERVERS=default DOWNLOAD_HOST=s3-1.amazonaws.com
+  - NAMESERVERS=default DOWNLOAD_HOST=s3-2.amazonaws.com
   - NAMESERVERS=bluebox-east
   - NAMESERVERS=bluebox-east DOWNLOAD_HOST=s3-1.amazonaws.com
   - NAMESERVERS=bluebox-east DOWNLOAD_HOST=s3-2.amazonaws.com
