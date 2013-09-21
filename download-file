@@ -8,16 +8,19 @@ host=s3.amazonaws.com
 if [ "$1" != "" ]; then
   ip=$(host $1 | awk '/has address/ { print $4 }')
   
+  traceroute -A -m 19 $ip > traceroute.txt 2>&1 &
+
   echo "Downloading from overridden $host with $1 ($ip)"
   curl -o /dev/null --resolve "$host:443:$ip" $url
   
-  traceroute -m 19 -A $ip
 else
+  traceroute -A -m 19 $host > traceroute.txt 2>&1 &
+
   echo "Downloading from $host"
-
   curl -o /dev/null $url
-
-  traceroute -m 19 -A $host
 fi
 
+echo
 
+wait
+cat traceroute.txt
