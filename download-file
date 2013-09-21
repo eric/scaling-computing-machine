@@ -11,13 +11,13 @@ if [ "$1" != "" ]; then
   echo "Downloading from overridden $host with $1 ($ip)"
   curl -o /dev/null --resolve "$host:443:$ip" $url
   
-  traceroute -A $ip
+  traceroute -m 19 -A $ip
 else
   echo "Downloading from $host"
 
   curl -o /dev/null $url
 
-  traceroute -A $host
+  traceroute -m 19 -A $host
 fi
 
 
