@@ -2,15 +2,34 @@
 
 set -e
 
-if [ $# -eq 0 ]; then
-  echo "No nameservers specified"
-  exit 1
-fi
-
-if [ "$1" = "default" ]; then
+if [ -z "$1" -o "$1" = "default" ]; then
   echo "Leaving nameservers as default"
   exit 0
 fi
+
+nameservers() {
+  for ns in "$@"; do
+    case $ns in
+      bluebox-east)
+      echo "199.91.168.70 199.91.168.71"
+      ;;
+      bluebox-west|bluebox)
+      echo "208.85.151.4 208.85.149.244"
+      ;;
+      google)
+      echo "8.8.8.8 8.8.4.4"
+      ;;
+      *.*.*.*)
+      echo $ns
+      ;;
+      *)
+      echo "Unknown nameserver: $ns" 1>&2
+      exit 2
+      ;;
+    esac
+  done
+}
+
 
 resolv_conf_stanza() {
   for ns in "$@" ; do
@@ -18,4 +37,7 @@ resolv_conf_stanza() {
   done
 }
 
-resolv_conf_stanza "$@" > /etc/resolv.conf
+resolved=$(nameservers "$@")
+
+echo "Setting nameservers to: $resolved"
+resolv_conf_stanza $resolved > /etc/resolv.conf

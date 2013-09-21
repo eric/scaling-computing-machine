@@ -1,18 +1,21 @@
 language: ruby
 
 env:
-  - NAMESERVERS=default
-  - NAMESERVERS=default DOWNLOAD_HOST=s3-1.amazonaws.com
-  - NAMESERVERS=default DOWNLOAD_HOST=s3-2.amazonaws.com
-  - NAMESERVERS="199.91.168.70 199.91.168.71"
-  - NAMESERVERS="199.91.168.70 199.91.168.71" DOWNLOAD_HOST=s3-1.amazonaws.com
-  - NAMESERVERS="199.91.168.70 199.91.168.71" DOWNLOAD_HOST=s3-2.amazonaws.com
+  - NAMESERVERS=bluebox-west
+  - NAMESERVERS=bluebox-west DOWNLOAD_HOST=s3-1.amazonaws.com
+  - NAMESERVERS=bluebox-west DOWNLOAD_HOST=s3-2.amazonaws.com
+  - NAMESERVERS=bluebox-east
+  - NAMESERVERS=bluebox-east DOWNLOAD_HOST=s3-1.amazonaws.com
+  - NAMESERVERS=bluebox-east DOWNLOAD_HOST=s3-2.amazonaws.com
+  - NAMESERVERS=google
+  - NAMESERVERS=google DOWNLOAD_HOST=s3-1.amazonaws.com
+  - NAMESERVERS=google DOWNLOAD_HOST=s3-2.amazonaws.com
 
 before_install:
   - sudo ./change-nameservers $NAMESERVERS
   
   - sudo apt-get -qq update
-  - sudo apt-get install libpcap-dev
+  # - sudo apt-get install libpcap-dev
   - sudo apt-get install traceroute host
 
 before_script:
