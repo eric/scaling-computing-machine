@@ -1,5 +1,7 @@
 language: ruby
 
+cache: apt
+
 env:
   - NAMESERVERS=default
   - NAMESERVERS=default DOWNLOAD_HOST=s3-1.amazonaws.com
